@@ -6,5 +6,10 @@ and returns the floor of the float.'''
 
 
 def floor(n: float) -> int:
-    ''' Return floor of n. '''
+    ''' Return floor of n. 
+    Args:
+        n (float): [float to be computed]
+    Returns:
+        int: [result]
+    '''
     return math.floor(n)
