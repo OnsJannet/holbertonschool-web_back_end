@@ -7,8 +7,12 @@ as argument and returns their sum as a float.
 
 from typing import List
 
+
 def sum_list(input_list: List[float]) -> float:
-    '''
-    Return sum of input_list
+    '''returns the sum of a list of floats
+    Args:
+        input_list (float): [list of floats]
+    Returns:
+        float: [sum of list items]
     '''
     return sum(input_list)
