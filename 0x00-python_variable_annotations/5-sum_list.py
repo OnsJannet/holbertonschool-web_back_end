@@ -6,6 +6,6 @@ as argument and returns their sum as a float.
 '''
 
 
-def sum_list(input_list: list) -> float:
+def sum_list(input_list: list[float]) -> float:
     ''' Return sum of input_list'''
-    return float(sum(input_list))
+    return sum(input_list)
