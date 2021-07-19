@@ -5,6 +5,6 @@ import math
 and returns the floor of the float.'''
 
 
-def floor (n: float) -> int:
+def floor(n: float) -> int:
     ''' Return floor of n. '''
     return int(n)
