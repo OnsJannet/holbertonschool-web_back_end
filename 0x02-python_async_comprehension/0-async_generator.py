@@ -9,10 +9,10 @@ from typing import Generator
 
 
 async def async_generator() -> Generator[float, None, None]:
-    ''' Loops 10 times wit a 1 sec wait
-        
-     '''
+    '''
+        Loops 10 times wit a 1 sec wait
 
+    '''
     for integer in range(10):
         await asyncio.sleep(1)
         yield random.uniform(0, 10)
