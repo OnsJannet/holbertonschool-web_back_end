@@ -15,7 +15,5 @@ async def async_comprehension() -> List[float]:
         Collect 10 numbers and return them
 
     '''
-    numbers = []
-    async for number in async_generator():
-        numbers.append(number)
-    return(numbers)
+
+    return ([number async for number in async_generator()])
