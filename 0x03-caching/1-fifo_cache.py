@@ -11,6 +11,7 @@ class FIFOCache(BaseCaching):
       - where your data are stored (in a dictionary)
     """
     def __init__(self):
+        """ BaseCaching """
         super().__init__()
 
     def put(self, key, item):
