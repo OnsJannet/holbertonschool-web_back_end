@@ -16,13 +16,14 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         """ Assign to the dictionary """
-        if key is None or item is None:
-            pass
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            print('DISCARD: {}'.format(list(self.cache_data.keys())[0]))
-            del self.cache_data[list(self.cache_data.keys())[0]]
-        else:
+        if key and item:
             self.cache_data[key] = item
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            discard = sorted(self.cache_data)[0]
+            self.cache_data.pop(discard)
+            print('DISCARD:', discard)
+        else:
+            pass
 
     def get(self, key):
         """ Get an item by key
