@@ -9,7 +9,7 @@ import logging
 
 
 class RedactingFormatter(logging.Formatter):
-    """ Redacting Formatter class
+    """ Redacting Formatter class.
         """
 
     REDACTION = "***"
