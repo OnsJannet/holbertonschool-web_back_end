@@ -5,6 +5,8 @@ filter_datum
 from typing import List
 import re
 import logging
+import mysql.connector
+import os
 
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
@@ -65,3 +67,16 @@ def get_logger() -> logging.Logger:
     logger.addHandler(stream_handler)
 
     return logger
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    '''returns a MySQL Database connector'''
+    holberton_connection =
+    mysql.connector.connect(os.getenv(user='PERSONAL_DATA_DB_USERNAME',
+                                           'root'),
+                            os.getenv(passwd='PERSONAL_DATA_DB_PASSWORD',
+                                             ''),
+                            os.getenv(host='PERSONAL_DATA_DB_HOST',
+                                           'localhost'),
+                            os.getenv(database='PERSONAL_DATA_DB_NAME'))
+    return holberton_connection
