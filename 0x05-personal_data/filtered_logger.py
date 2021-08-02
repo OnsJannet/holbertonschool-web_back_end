@@ -72,11 +72,11 @@ def get_logger() -> logging.Logger:
 def get_db() -> mysql.connector.connection.MySQLConnection:
     '''returns a MySQL Database connector'''
     holberton_connection =
-    mysql.connector.connect(os.getenv(user='PERSONAL_DATA_DB_USERNAME',
+    mysql.connector.connect(user=os.getenv('PERSONAL_DATA_DB_USERNAME',
                                            'root'),
-                            os.getenv(passwd='PERSONAL_DATA_DB_PASSWORD',
+                            password=os.getenv('PERSONAL_DATA_DB_PASSWORD',
                                              ''),
-                            os.getenv(host='PERSONAL_DATA_DB_HOST',
+                            host=os.getenv('PERSONAL_DATA_DB_HOST',
                                            'localhost'),
-                            os.getenv(database='PERSONAL_DATA_DB_NAME'))
+                            database=os.getenv('PERSONAL_DATA_DB_NAME'))
     return holberton_connection
