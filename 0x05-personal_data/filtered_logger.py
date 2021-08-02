@@ -13,23 +13,23 @@ PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
 
 class RedactingFormatter(logging.Formatter):
-    """ Redacting Formatter class.
-        """
+    '''Redacting Formatter class.
+    '''
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
 
     def __init__(self, fields: List[str]):
-        """
+        '''
         Constructor
-        """
+        '''
         self.fields = fields
         super(RedactingFormatter, self).__init__(self.FORMAT)
 
     def format(self, record: logging.LogRecord) -> str:
-        """
+        '''
         Filters values in incoming log records using `filter_datum`
-        """
+        '''
         return filter_datum(self.fields, self.REDACTION,
                             super().format(record), self.SEPARATOR)
 
@@ -74,10 +74,10 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     '''
     returns a MySQL Database connector
     '''
-    user: os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
-    password: os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
-    host: os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
-    database: os.getenv('PERSONAL_DATA_DB_NAME')
+    user = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
+    password = os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
+    host = os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
+    database =  os.getenv('PERSONAL_DATA_DB_NAME')
 
     connector = mysql.connector.connect(
         user=user,
