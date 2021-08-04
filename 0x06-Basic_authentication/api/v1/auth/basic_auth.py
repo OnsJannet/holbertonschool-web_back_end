@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""
+'''
 Basic authentication
-"""
+'''
 
 from api.v1.auth.auth import Auth
 from flask import Flask, request
@@ -12,7 +12,7 @@ from models.user import User
 
 class BasicAuth(Auth):
     '''
-    inherits from Auth
+    BasicAuth: inherits from Auth
     '''
 
     def extract_base64_authorization_header(self,
