@@ -42,4 +42,3 @@ def forbidden() -> str:
       - raises a 401 error by using abort
     """
     abort(403)
-
