@@ -2,7 +2,6 @@
 '''
 Basic authentication
 '''
-
 from api.v1.auth.auth import Auth
 from flask import Flask, request
 from base64 import b64decode
@@ -14,9 +13,9 @@ class BasicAuth(Auth):
     '''
     BasicAuth: inherits from Auth
     '''
-
     def extract_base64_authorization_header(self,
-                                            authorization_header: str) -> str:
+                                            authorization_header: str
+                                            ) -> str:
         '''
          returns the Base64 part of the Authorization
         '''
@@ -30,9 +29,8 @@ class BasicAuth(Auth):
             return authorization_header[6:]
 
     def decode_base64_authorization_header(self,
-                                           base64_authorization_header:
-                                           str) -> str:
-
+                                           base64_authorization_header: str
+                                           ) -> str:
         '''
          returns returns the decoded value of a Base64 string
         '''
@@ -49,9 +47,8 @@ class BasicAuth(Auth):
             return None
 
     def extract_user_credentials(self,
-                                 decoded_base64_authorization_header:
-                                 str) -> (str, str):
-
+                                 decoded_base64_authorization_header: str
+                                 ) -> (str, str):
         '''
          the user email and password from the Base64 decoded value.
         '''
@@ -65,8 +62,7 @@ class BasicAuth(Auth):
             return tuple(decoded_base64_authorization_header.split(':', 1))
 
     def user_object_from_credentials(self, user_email: str,
-                                     user_pwd: str)-> TypeVar('User'):
-
+                                     user_pwd: str) -> TypeVar('User'):
         '''
          the User instance based on his email and password.
         '''
@@ -89,7 +85,6 @@ class BasicAuth(Auth):
         return None
 
     def current_user(self, request=None) -> TypeVar('User'):
-
         '''
          overloads Auth and retrieves the User instance for a request.
         '''
