@@ -43,7 +43,7 @@ def not_found(error) -> str:
     """
     return jsonify({"error": "Forbidden"}), 403
 
-
+@app.before_request
 def before_request() -> None:
     """
     Filters request
@@ -62,7 +62,7 @@ def before_request() -> None:
                 abort(403)
 
 
-app.before_request(before_request)
+    request.current_user = auth.current_user(request)
 
 if __name__ == "__main__":
     host = getenv("API_HOST", "0.0.0.0")
