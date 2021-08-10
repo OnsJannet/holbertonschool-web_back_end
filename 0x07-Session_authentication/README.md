@@ -1,1 +1,1 @@
-# 0x07. Session authentication
+# Session authentication
