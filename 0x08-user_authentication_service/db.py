@@ -7,9 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
-
-from user import Base
-from user import User
+from user import Base, User
 
 
 class DB:
@@ -70,7 +68,7 @@ class DB:
 
         data = User.__table__.columns.keys()
         for key in kwargs.keys():
-            if key not in data:
+            if key not in cols_keys:
                 raise ValueError
 
         for key, value in kwargs.items():
