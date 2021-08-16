@@ -70,7 +70,7 @@ class DB:
 
         data = User.__table__.columns.keys()
         for key in kwargs.keys():
-            if key not in cols_keys:
+            if key not in data:
                 raise ValueError
 
         for key, value in kwargs.items():
