@@ -16,7 +16,7 @@ def Bienvenue() -> str:
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def users() -> str:
+def users():
     ''' Users '''
     email = request.form.get('email')
     password = request.form.get('password')
