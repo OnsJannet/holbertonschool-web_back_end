@@ -33,13 +33,14 @@ class TestGithubOrgClient(unittest.TestCase):
         is the expected one based on the mocked payload.
         '''
         with patch.object(GithubOrgClient,
-                               "org",
-                               new_callable=PropertyMock) as mock_org:
-            test_json = {"url": "facebook", "repos_url": "http://taylorswift.com"}
-            mock_org.return_value = test_json
+                          "org",
+                          new_callable=PropertyMock) as mock_o:
+            test_json = {"url": "facebook",
+                         "repos_url": "http://taylorswift.com"}
+            mock_o.return_value = test_json
             github_client = GithubOrgClient(test_json.get("url"))
             response = github_client._public_repos_url
-            mock_org.assert_called_once()
+            mock_o.assert_called_once()
             self.assertEqual(response, test_json.get("repos_url"))
 
     @patch("client.get_json")
@@ -48,15 +49,15 @@ class TestGithubOrgClient(unittest.TestCase):
         Test that the list of repos is what you expect from the chosen payload.
         '''
         get_patch.return_value = [{"name": "google"},
-                                      {"name": "abc"}]
+                                  {"name": "abc"}]
         with patch.object(GithubOrgClient, "_public_repos_url",
-                               new_callable=PropertyMock) as mock_public:
-            mock_public.return_value = "http://taylorswift.com"
+                          new_callable=PropertyMock) as mock_o:
+            mock_o.return_value = "http://taylorswift.com"
             github_client = GithubOrgClient("facebook")
             response = github_client.public_repos()
             self.assertEqual(response, ["google", "abc"])
             get_patch.assert_called_once()
-            mock_public.assert_called_once()
+            mock_o.assert_called_once()
 
     @parameterized.expand([
         ({"license": {"key": "my_license"}}, "my_license", True),
