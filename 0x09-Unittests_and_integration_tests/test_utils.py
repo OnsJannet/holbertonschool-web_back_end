@@ -7,7 +7,8 @@ import requests
 from utils import access_nested_map, get_json, memoize
 from parameterized import parameterized
 from unittest import mock
-from unittest.mock import patch, PropertyMock
+from unittest.mock import patch
+
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -33,9 +34,9 @@ class TestAccessNestedMap(unittest.TestCase):
         '''
         tests that a KeyError is raised for the following inputs.
         '''
-        with self.assertRaises(TypeError) as error:
+        with self.assertRaises(KeyError) as error:
             access_nested_map(nested_map, path)
-            self.assertEqual(ret_error, error.exception)
+            self.assertEqual(ret_error, str(error.exception))
 
 
 class TestGetJson(unittest.TestCase):
