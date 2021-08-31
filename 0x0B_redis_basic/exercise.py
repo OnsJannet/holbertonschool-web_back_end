@@ -10,16 +10,19 @@ from functools import wraps
 
 
 def count_calls(method: Callable) -> Callable:
-    ''' counts the times a function is 
+    ''' counts the times a function is
         being called
     '''
     key = method.__qualname__
+
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         ''' wrapper '''
         self._redis.incr(key)
         return method(self, *args, **kwargs)
+
     return wrapper
+
 
 def call_history(method: Callable) -> Callable:
     ''' store the history of inputs
@@ -31,9 +34,9 @@ def call_history(method: Callable) -> Callable:
     def wrapper(self, *args, **kwargs):
         ''' wrapper '''
         str_input = str(args)
-        self._redis.rpush(call_key  + ':inputs', str_input)
+        self._redis.rpush(call_key + ':inputs', str_input)
         self._redis.rpush(
-            call_key  + ':outputs',
+            call_key + ':outputs',
             method(self, *args, **kwargs)
         )
         return method(self, *args, **kwargs)
@@ -41,8 +44,8 @@ def call_history(method: Callable) -> Callable:
 
 
 def replay(fn: Callable) -> str:
-    ''' display the history of 
-        calls of a particular function. 
+    ''' display the history of
+        calls of a particular function.
     '''
     data = fn.__qualname__
     inputs = f"{data}:inputs"
