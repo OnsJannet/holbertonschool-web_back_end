@@ -6,7 +6,7 @@ from functools import wraps
 from typing import Callable
 
 
-red = Redis()
+red = redis.Redis()
 
 
 def count(method: Callable) -> Callable:
