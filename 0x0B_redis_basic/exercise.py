@@ -8,6 +8,19 @@ import uuid
 from typing import Union, Callable, Optional
 
 
+def count_calls(methode: Callable) -> Callable:
+    ''' counts the times a function is 
+        being called
+    '''
+    key = method.__qualname__
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        ''' wrapper '''
+        self._redis.incr(key)
+        return method(self, rgs, **kwargs)
+    return wrapper
+
+
 class Cache:
     ''' Cache '''
     def __init__(self):
@@ -21,22 +34,23 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, data: str, fn: Optional[Callable]) -> \
+    def get(self, data: str, fn: Optional[Callable] = None) -> \
             Union[str, bytes, int, float]:
         ''' returns stored data '''
-        fn_data = self._redis.get(data)
         if data:
-            return fn(fn_data)
-        else:
-            return fn_data
+            fn_data = self._redis.get(data)
+            if fn:
+                return fn(fn_data)
+            else:
+                return fn_data
 
-    def get_str() -> str:
+    def get_str(self, data: bytes) -> str:
         ''' parametrize Cache.get with the correct
             conversion function
         '''
         return data.decode('utf-8')
 
-    def get_int() -> int:
+    def get_int(self, data: bytes) -> int:
         ''' parametrize Cache.get with the correct
             conversion function
         '''
