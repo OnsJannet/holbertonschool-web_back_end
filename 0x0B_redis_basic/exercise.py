@@ -92,6 +92,6 @@ class Cache:
 
     def get_int(self, data: bytes) -> int:
         ''' parametrize Cache.get with the correct
-            conversion function
+            conversion function.
         '''
         return int(data)
