@@ -1,5 +1,14 @@
 # 0x0D. NoSQL
 
+## Resources:
+https://docs.mongodb.com/manual/reference/command/listDatabases/#mongodb-dbcommand-dbcmd.listDatabases
+https://docs.mongodb.com/manual/reference/method/
+https://docs.mongodb.com/manual/aggregation/
+https://riak.com/resources/nosql-databases/
+https://www.youtube.com/watch?v=qUV2j3XBRHc
+https://www.youtube.com/watch?v=CB9G5Dvv-EE
+https://realpython.com/introduction-to-mongodb-and-python/
+
 ## General: 
 in this project we will learn the following:
 
