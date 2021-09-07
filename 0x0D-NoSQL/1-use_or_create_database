@@ -1,1 +1,2 @@
+// MongoDB: creates databases.
 use my_db
