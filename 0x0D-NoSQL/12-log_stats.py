@@ -5,7 +5,7 @@ Nginx logs stored in MongoDB """
 from pymongo import MongoClient
 
 
-def log_stats(logs_dict: dict) -> int:
+def log_stats(log_dict: dict) -> int:
     """ provides some stats about Nginx logs stored in MongoDB
         - Database: logs
         - Collection: nginx
@@ -13,15 +13,15 @@ def log_stats(logs_dict: dict) -> int:
     """
     client = MongoClient('mongodb://127.0.0.1:27017')
     data = client.logs.nginx
-    logs = data.count_documents(logs_dict)
+    logs = data.count_documents({log_dict})
     message = f"\
-              { logger({}) } logs\n\
+              { log_stats({logs}) } logs\n\
               Methods:\n\
-              \tmethod GET: { logger({'method': 'GET'}) }\n\
-              \tmethod POST: { logger({'method': 'POST'}) }\n\
-              \tmethod PUT: {logger({'method': 'PUT'})}\n\
-              \tmethod PATCH: {logger({'method': 'PATCH'})}\n\
-              \tmethod DELETE: {logger({'method': 'DELETE'})}\n\
+              \tmethod GET: { log_stats({'method': 'GET'}) }\n\
+              \tmethod POST: { log_stats({'method': 'POST'}) }\n\
+              \tmethod PUT: {log_stats({'method': 'PUT'})}\n\
+              \tmethod PATCH: {log_stats({'method': 'PATCH'})}\n\
+              \tmethod DELETE: {log_stats({'method': 'DELETE'})}\n\
               {status} status check\
             "
     print(message)
