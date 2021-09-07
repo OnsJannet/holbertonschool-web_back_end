@@ -1,1 +1,2 @@
+// MongoDB: Inserts document in a collection.
 db.user.insert({name: "Holberton school"})
