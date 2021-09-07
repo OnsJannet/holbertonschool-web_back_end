@@ -15,7 +15,7 @@ def log_stats(logs_dict: dict) -> int:
     data = client.logs.nginx
     logs = data.count_documents(logs_dict)
     message = f"\
-              {logs} logs\n\
+              { logger({}) } logs\n\
               Methods:\n\
               \tmethod GET: { logger({'method': 'GET'}) }\n\
               \tmethod POST: { logger({'method': 'POST'}) }\n\
