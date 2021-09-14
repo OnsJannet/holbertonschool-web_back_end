@@ -1,12 +1,12 @@
 import signUpUser from './4-user-promise';
 import uploadPhoto from './5-photo-reject';
 
-export default function handleProfileSignup(firstName, lastName, filename) {
- const user = await signUpUser(firstName, lastName);
+export default async function handleProfileSignup(firstName, lastName, fileName) {
+  const user = await signUpUser(firstName, lastName);
  let photo = null;
  try {
    photo = await uploadPhoto(fileName);
-  } catch (errors) {
+  } catch (error) {
     photo = `${error.name}: ${error.message}`;
   }
   const promise1 = { status: 'fulfilled', value: user };
