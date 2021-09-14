@@ -1,5 +1,6 @@
-function getResponseFromAPI() {
-  return Promise.resolve();
+export default function getResponseFromAPI() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+    }, 2000);
+  });
 }
-
-export default getResponseFromAPI;
