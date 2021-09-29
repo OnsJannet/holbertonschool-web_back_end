@@ -1,6 +1,7 @@
-const calculateNumber = require('./1-calcul');
-let chai = require('chai');
-let expect = chai.expect;
+const chai = require('chai');
+const calculateNumber = require('./2-calcul_chai');
+
+const { expect } = chai;
 
 describe('calculateNumber', () => {
   expect(4).to.equal(calculateNumber('SUM', 1, 3));
