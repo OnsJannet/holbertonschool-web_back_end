@@ -7,7 +7,7 @@ describe("sendPaymentRequestToApi", function() {
 	// assert.equal(5, Utils.calculateNumber('SUM', 3.1, 1.9));
 
 	sinon.spy(Utils, "calculateNumber");
-	Utils.calculateNumber('SUM', 100, 13);
+	Utils.calculateNumber('SUM', 100, 20);
 
 	let spyCall = Utils.calculateNumber.getCall(0);
 	assert.equal(spyCall.returnValue, sendPaymentRequestToApi(100, 20));
